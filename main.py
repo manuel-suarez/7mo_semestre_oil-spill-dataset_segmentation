@@ -16,12 +16,13 @@ from tensorflow import io as tf_io
 
 # Models
 from models.deeplabv3p import DeeplabV3Plus
-from data.instance_lhp import train_dataset, val_dataset, HOME_DIR, IMAGE_SIZE, NUM_CLASSES
+# from data.instance_lhp import train_dataset, val_dataset, HOME_DIR, IMAGE_SIZE, NUM_CLASSES
+from data.oil_spill_dataset import train_dataset, val_dataset, HOME_DIR, IMAGE_SIZE, NUM_CLASSES, NUM_INPUTS 
 
 print("Train Dataset:", train_dataset)
 print("Val Dataset:", val_dataset)
 
-model = DeeplabV3Plus(image_size=IMAGE_SIZE, num_classes=NUM_CLASSES)
+model = DeeplabV3Plus(image_size=IMAGE_SIZE, num_classes=NUM_CLASSES, num_inputs=NUM_INPUTS)
 model.summary()
 
 loss = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
