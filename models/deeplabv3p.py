@@ -39,8 +39,8 @@ def DilatedSpatialPyramidPooling(dspp_input):
     output = convolution_block(x, kernel_size=1)
     return output
 
-def DeeplabV3Plus(image_size, num_classes):
-    model_input = keras.Input(shape=(image_size, image_size, 3))
+def DeeplabV3Plus(image_size, num_classes, num_inputs):
+    model_input = keras.Input(shape=(image_size, image_size, num_inputs))
     preprocessed = keras.applications.resnet50.preprocess_input(model_input)
     resnet50 = keras.applications.ResNet50(
         weights="imagenet", include_top=False, input_tensor=preprocessed
